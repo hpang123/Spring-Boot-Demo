@@ -1,0 +1,5 @@
+INSERT INTO author (first_name, last_name) VALUES ('Alex', 'Antonov')
+INSERT INTO publisher (name) VALUES ('Packt')
+INSERT INTO book (isbn, title, author_id, publisher_id) VALUES ('978-1-78528-415-1', 'Spring Boot Recipes', 1, 1)
+INSERT INTO reviewer(first_name, last_name) VALUES ('Ray', 'Pang')
+INSERT INTO book_reviewers(book_id, reviewers_id) VALUES(1,1)

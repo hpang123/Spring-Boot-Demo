@@ -1,0 +1,88 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.7.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+/* It seems that we don't need it in new version spring boot
+jar {
+    baseName = 'bookpub'
+    version = '0.0.1-SNAPSHOT'
+}
+*/
+
+group = 'org.test'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+/*need to Refresh Gradle project in Eclipse (right mouse click: gradle)*/
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile("org.springframework.boot:spring-boot-starter-jdbc")
+	compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+    /*With actuator, we can run http://localhost:8080/health, 
+    or /env, /metrics, /configprops, /autoconfig, /beans, /mappings, /info
+     */
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    /* connect to admin metrix 
+    In DOS console: jconsole (java_process_)PID, then look at MBeans tab
+    */
+    compile("de.codecentric:spring-boot-admin-starter-client:1.2.1")
+    /* Use JMX */
+    compile("org.jolokia:jolokia-core:+")
+    
+    compile project(':db-count-starter')
+	runtime("com.h2database:h2")
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	/* In order to be able to use the jsonPath(…) matcher at runtime */
+	testRuntime("com.jayway.jsonpath:json-path")
+}
+
+/* spring-boot-gradle-plugin do the gradle magic tasks that allow us
+	to package the Spring Boot application together, run it, and build JAR, WAR files
+	for example, bootRun task
+	*/
+/* gradle tasks: It will show all tasks in gradle*/
+/* gradle clean bootRun */
+/* gradle clean test */
+/* test result can be seen in bookpub\build\reports\tests\test\index.html
+/* Turn on auto-configuration report or you can type in window console:set DEBUG=true 
+	to make debug mode(include showing hibernate sql)*/
+	
+bootRun {
+    // Use --debug option to print out 
+    // auto-configuration report.
+    //args '--debug'
+    
+    addResources = false //show the info properties in /info
+}
+
+/* show the info properties in /info with Actuator plugin */
+processResources {
+    filesMatching("**/application.properties") {
+        expand(project.properties)
+    }
+}
+
+
+/* gradle clean build - it will build executable jar 
+ you can run as: java -jar bookpubxxx.jar
+ or bookpubxxx.jar on background
+*/
+/* gradle clean bootRepackage */

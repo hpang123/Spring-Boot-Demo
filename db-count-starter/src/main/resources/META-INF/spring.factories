@@ -1,0 +1,7 @@
+#During the application startup, Spring Boot uses SpringFactoriesLoader, 
+#which is a part of Spring Core, 
+#in order to get a list of the Spring Java Configurations that are configured
+#for the org.springframework.boot.autoconfigure.EnableAutoConfiguration property key.
+
+#We can use EnableDbCounting annotation instead define it here
+#org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.test.bookpubstarter.dbcount.DbCountAutoConfiguration
