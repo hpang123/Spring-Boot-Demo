@@ -1,0 +1,35 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.7.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'org.sample.admin'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile("de.codecentric:spring-boot-admin-server:1.4.3")
+	compile("de.codecentric:spring-boot-admin-server-ui:1.4.3")
+}
+
+//http://localhost:8090 used for admin defined in application.property
