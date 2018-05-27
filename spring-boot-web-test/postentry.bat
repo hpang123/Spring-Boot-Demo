@@ -1,0 +1,2 @@
+//For window, don't use single quote
+curl -v -X POST -H "Content-Type:application/json"  -d "{\"title\":\"Test Spring Boot\",\"created\":\"06/18/2016\",\"summary\":\"Create UnitTest for Spring Boot\"}"   http://localhost:8080/journal
