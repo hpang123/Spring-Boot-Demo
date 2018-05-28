@@ -1,3 +1,4 @@
 ## Spring Boot Application
 
 - [Spring Boot Tutorials](http://www.springboottutorial.com/)
+- [Spring Data JPA - Reference Documentation](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
