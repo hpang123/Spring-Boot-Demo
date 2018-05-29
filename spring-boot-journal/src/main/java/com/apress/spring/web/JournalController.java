@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.apress.spring.domain.Journal;
 import com.apress.spring.service.JournalService;
@@ -24,6 +25,7 @@ import com.apress.spring.service.JournalService;
  * http://localhost:8080/journal/summary/Today
  * 
  */
+//@RestController
 @Controller
 public class JournalController {
 
@@ -53,9 +55,20 @@ public class JournalController {
 		return service.findByCustomQuery(word);
 	}
 	
+	/* Work with @Controller not with @RestController */
 	@RequestMapping("/")
 	public String index(Model model){
 		model.addAttribute("journal", service.findAll());
 		return "index";
 	}
+	
+	/* Another way to do MVC, work with both @Controller and @RestController*/
+	@RequestMapping(value="/mvc", method = RequestMethod.GET)
+	public ModelAndView index(ModelAndView modelAndView){
+		modelAndView.setViewName("index");
+		modelAndView.addObject("journal", service.findAll());
+		return modelAndView;
+	}
+	
+	
 }
