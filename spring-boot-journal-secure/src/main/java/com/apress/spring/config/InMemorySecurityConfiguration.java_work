@@ -1,0 +1,28 @@
+package com.apress.spring.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
+
+@Configuration
+/*
+ * @EnableGlobalAuthentication . This annotation marks the class and configures
+ * all the necessary beans to activate the security on the application; 
+ * it signals that the annotated class can be used to configure
+ * a global instance of the AuthenticationManagerBuilder .
+ */
+@EnableGlobalAuthentication
+public class InMemorySecurityConfiguration {
+
+		/*
+		 * The AuthenticationManagerBuilder allows you to easily 
+		 * build your authentication by adding UserDetailsService 
+		 * and the authentication providers.
+		 */
+       @Autowired
+       public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+               auth.inMemoryAuthentication().withUser("user").password("password").roles("USER")
+                               .and().withUser("admin").password("password").roles("USER", "ADMIN");
+       }
+}
