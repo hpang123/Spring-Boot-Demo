@@ -1,0 +1,171 @@
+
+http://localhost:8080/people
+{
+  "_embedded" : {
+    "personResources" : [ {
+      "person" : {
+        "firstName" : "david",
+        "secondName" : "chen",
+        "dateOfBirth" : "02/01/2016 00:00",
+        "profession" : "Teacher",
+        "salary" : 1000
+      },
+      "_links" : {
+        "people" : {
+          "href" : "http://localhost:8080/people"
+        },
+        "memberships" : {
+          "href" : "http://localhost:8080/people/1/memberships"
+        },
+        "self" : {
+          "href" : "http://localhost:8080/people/1"
+        }
+      }
+    }, {
+      "person" : {
+        "firstName" : "ray",
+        "secondName" : "smith",
+        "dateOfBirth" : "02/01/2000 00:00",
+        "profession" : "Worker",
+        "salary" : 100
+      },
+      "_links" : {
+        "people" : {
+          "href" : "http://localhost:8080/people"
+        },
+        "memberships" : {
+          "href" : "http://localhost:8080/people/2/memberships"
+        },
+        "self" : {
+          "href" : "http://localhost:8080/people/2"
+        }
+      }
+    }, {
+      "person" : {
+        "firstName" : "chris",
+        "secondName" : "john",
+        "dateOfBirth" : "02/01/1950 00:00",
+        "profession" : "Doctor",
+        "salary" : 80000
+      },
+      "_links" : {
+        "people" : {
+          "href" : "http://localhost:8080/people"
+        },
+        "memberships" : {
+          "href" : "http://localhost:8080/people/3/memberships"
+        },
+        "self" : {
+          "href" : "http://localhost:8080/people/3"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/people"
+    }
+  }
+}
+
+
+http://localhost:8080/people/1
+
+{
+	  "person" : {
+	    "firstName" : "david",
+	    "secondName" : "chen",
+	    "dateOfBirth" : "02/01/2016 00:00",
+	    "profession" : "Teacher",
+	    "salary" : 1000
+	  },
+	  "_links" : {
+	    "people" : {
+	      "href" : "http://localhost:8080/people"
+	    },
+	    "memberships" : {
+	      "href" : "http://localhost:8080/people/1/memberships"
+	    },
+	    "self" : {
+	      "href" : "http://localhost:8080/people/1"
+	    }
+	  }
+}
+
+
+
+http://localhost:8080/people/1/memberships/1
+
+{
+	  "gymMembership" : {
+	    "name" : "Fitness",
+	    "cost" : 50
+	  },
+	  "_links" : {
+	    "membership-id" : {
+	      "href" : "1"
+	    },
+	    "memberships" : {
+	      "href" : "http://localhost:8080/people/1/memberships"
+	    },
+	    "owner" : {
+	      "href" : "http://localhost:8080/people/1"
+	    },
+	    "self" : {
+	      "href" : "http://localhost:8080/people/1/memberships/1"
+	    }
+	  }
+}
+
+
+http://localhost:8080/people/1/memberships/
+
+{
+	  "_embedded" : {
+	    "gymMembershipResources" : [ {
+	      "gymMembership" : {
+	        "name" : "Fitness",
+	        "cost" : 50
+	      },
+	      "_links" : {
+	        "membership-id" : {
+	          "href" : "1"
+	        },
+	        "memberships" : {
+	          "href" : "http://localhost:8080/people/1/memberships"
+	        },
+	        "owner" : {
+	          "href" : "http://localhost:8080/people/1"
+	        },
+	        "self" : {
+	          "href" : "http://localhost:8080/people/1/memberships/1"
+	        }
+	      }
+	    }, {
+	      "gymMembership" : {
+	        "name" : "Movies",
+	        "cost" : 20
+	      },
+	      "_links" : {
+	        "membership-id" : {
+	          "href" : "2"
+	        },
+	        "memberships" : {
+	          "href" : "http://localhost:8080/people/1/memberships"
+	        },
+	        "owner" : {
+	          "href" : "http://localhost:8080/people/1"
+	        },
+	        "self" : {
+	          "href" : "http://localhost:8080/people/1/memberships/2"
+	        }
+	      }
+	    } ]
+	  },
+	  "_links" : {
+	    "self" : {
+	      "href" : "http://localhost:8080/people/1/memberships/"
+	    }
+	  }
+}
+	
