@@ -11,3 +11,4 @@
 - [Spring Boot Data JPA](https://dzone.com/articles/introduction-to-jpa-using-spring-boot-data-jpa)
 - [Spring Boot Exception(Error) Handling for RESTful Services](http://www.springboottutorial.com/spring-boot-exception-handling-for-rest-services)
 - [Spring Boot Code Examples](https://github.com/thombergs/code-examples/tree/master/spring-boot)
+- [Spring Interview Questions List](https://www.javamash.com/spring-interview-questions-and-answers/)
